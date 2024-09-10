@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { getMovieByName } from "../../API.js";
 import MoviesList from "../../components/MovieList/MovieList.jsx";
-import css from './MoviesPage.module.css';
+import css from "./MoviesPage.module.css";
 
 export default function MoviesPage() {
   const [moviesList, setMoviesList] = useState([]);
@@ -14,7 +14,6 @@ export default function MoviesPage() {
       try {
         const response = await getMovieByName(searchRequest);
         setMoviesList([...response.data.results]);
-        setParams({ query: searchRequest });
       } catch (error) {
         console.log(error);
       }
@@ -23,7 +22,7 @@ export default function MoviesPage() {
     if (params.get("query")) {
       getList(params.get("query"));
     }
-  }, [params, setParams]);
+  }, [params]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -40,7 +39,7 @@ export default function MoviesPage() {
   return (
     <div>
       <form onSubmit={handleSubmit} className={css.form}>
-        <input type="text" name="name" className={css.input}/>
+        <input type="text" name="name" className={css.input} />
         <button className={css.button}>Search</button>
       </form>
       <MoviesList list={moviesList} loc={loc} />
