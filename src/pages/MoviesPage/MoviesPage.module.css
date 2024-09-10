@@ -1,0 +1,20 @@
+.form {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.input {
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+.input:focus-visible {
+    outline: none;
+}
+
+.button {
+    height: 40px;
+}
